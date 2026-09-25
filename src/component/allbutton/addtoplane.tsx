@@ -18,20 +18,20 @@ const Addtoplane = ({ details }: { details: IExercise }) => {
 
     const handlesave = () => {
         if (saveadd) {
-            toast.error(`${details.name} Save Card already added`)
+            toast.error('Save Card already added')
             return
         }
         setSaveExercise([...saveExercise, details])
-        toast.success(`${details.name} Save Card added`)
+        toast.success('Save for latter')
     }
     const handleaddplane = () => {
 
         if (isadded) {
-            toast.error(`${details.name} is already added`)
+            toast.error("already in your plan")
             return
         }
         setaddplane([...addplane, details])
-        toast.success(`${details.name} is added`)
+        toast.success("added to today's plan")
     }
     return (
         <div className='flex gap-5 items-center'>

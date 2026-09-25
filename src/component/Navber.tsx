@@ -24,29 +24,30 @@ const Navber = () => {
 
                 </div>
                 <div>
-                    <ul className='flex gap-5 items-center'>
+                    <ul className='flex gap-3 items-center'>
                         <Link href='/homes'>
-                            <li className={`px-5 py-2 rounded-3xl ${pathname === '/homes' ? 'bg-[#1A2312] text-[#C2F800]' : 'text-white'} `}>Workouts</li>
+                            <li className={`font-bold px-5 py-2 rounded-3xl ${pathname === '/homes' ? 'bg-[#1A2312] text-[#C2F800]' : 'text-white'} `}>Workouts</li>
                         </Link>
                         <Link href='/myplane'>
-                            <li className={`px-5 py-2 rounded-3xl ${pathname === '/myplane' ? 'bg-[#1A2312] text-[#C2F800]' : 'text-white'} `}>My Plan</li>
+                            <li className={`font-bold px-5 py-2 rounded-3xl ${pathname === '/myplane' ? 'bg-[#1A2312] text-[#C2F800]' : 'text-white'} `}>My Plan</li>
                         </Link>
                     </ul>
                 </div>
-                <div className='flex gap-5'>
+                <div className='flex gap-5 items-center'>
+                    <Link href='/myplane'>
+                        <button className='flex items-center gap-3 hover: hover:bg-[#1d2027] hover:cursor-pointer px-4 py-2 rounded-2xl'>
+                            <span className='text-xl font-bold cursor-pointer'>Plan</span>
+                            <span className='flex items-center justify-center text-xl text-black font-bold bg-[#C2F800] rounded-full w-8 h-8 cursor-pointer '>{addplane.length}</span></button>
+                    </Link>
                     <Link href='/myplane'>
                         <button className='flex items-center gap-3 hover: hover:bg-[#1d2027] px-4 py-2 rounded-2xl'>
-                            <span className='text-xl font-bold'>Plan</span>
-                            <span className='flex items-center justify-center text-xl text-black font-bold bg-[#C2F800] rounded-full w-8 h-8 '>{addplane.length}</span></button>
+                            <span className='text-xl font-bold cursor-pointer'>Saved</span>
+                            <span className='flex items-center justify-center text-xl text-white font-bold bg-black rounded-full w-9 h-9 border border-[#2D313B] cursor-pointer '>{saveExercise.length}</span>
+                        </button>
                     </Link>
-                    <button>
-                        <span>Saved</span>
-                        <span>{saveExercise.length}</span>
-                    </button>
                 </div>
             </div>
         </nav>
-
     );
 };
 
