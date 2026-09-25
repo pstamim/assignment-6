@@ -1,0 +1,110 @@
+'use client'
+import { ExerciseContext } from '@/component/context/Provider';
+import icon from '../../../public/Vector (1).png'
+import Image from 'next/image';
+import React, { useContext, useState } from 'react';
+import { IoMdTime } from 'react-icons/io';
+import { MdOutlineStarOutline } from 'react-icons/md';
+import { IoClose } from 'react-icons/io5';
+import Link from 'next/link';
+import { IExercise } from '@/component/types/exercise';
+
+const Page = () => {
+    const { addplane, setaddplane } = useContext(ExerciseContext)
+    const [addtab, setaddtab] = useState('Today’s Plan')
+
+    const handleremove = (id: number) => {
+        const isadded = addplane.filter((exercise: IExercise) => exercise.id !== id)
+        setaddplane(isadded)
+
+    }
+    const handletab = () => {
+        setaddtab('Saved')
+    }
+    return (
+        <div className='flex justify-between container mx-auto mt-10 '>
+            <div className='space-y-2'>
+
+                <h1 className='text-4xl font-bold'>MY PLAN</h1>
+                <p className='text-[#8A92A0]'>Cap of five lifts for today. Finish them, then load more.</p>
+
+                <div className='flex justify-center gap-100 mt-10 border border-slate-800 bg-[#13161D] rounded-2xl p-10 pr-100 '>
+                    <div>
+                        <p className='text-[#8A92A0]'>Exercises</p>
+                        <h1 className='text-5xl font-bold text-[#C2F800]'>{addplane.length}</h1>
+                    </div>
+                    <div className='border-l border-[#242833] pl-5'>
+                        <p className='text-[#8A92A0] border-l border-slate-800'>Minutes</p>
+                        <h1 className='text-5xl font-bold'>{addplane.map(time => time.duration).reduce((acc, sum) => {
+                            return acc + sum
+                        }, 0)}</h1>
+                    </div>
+                    <div className='border-l border-[#242833] pl-5'>
+                        <p className='text-[#8A92A0]'>Calories</p>
+                        <h1 className='text-5xl font-bold'>{addplane.map(calorise => calorise.caloriesBurned).reduce((acc, sum) => {
+                            return acc + sum
+                        }, 0)}</h1>
+                    </div>
+                </div>
+                <div className='flex w-fit items-center rounded-xl border border-[#242833] bg-[#12151b] p-1 mt-10'>
+                    <button onClick={() => setaddtab('Today’s Plan')}
+                        className={`rounded-lg px-5 py-2 text-xs font-medium transition ${addtab === 'Today’s Plan' ? "bg-[#20252e] text-white" : "text-slate-500 hover:text-white"}`}>Today’s Plan</button>
+                    <button onClick={() => setaddtab('Saved')}
+                        className={`rounded-lg px-5 py-2 text-xs font-medium transition
+                            ${addtab === 'Saved' ? 'bg-[#20252e] text-white' : "text-slate-500 hover:text-white"}
+                         hover:text-white`}>Saved</button>
+                </div>
+                <div className='flex flex-col gap-4 mt-10'>
+
+                    {
+                        addplane.map((exercise) => <div className='flex items-center justify-between rounded-2xl border border-slate-800 bg-[#14171D] p-5' key={exercise.id}>
+                            <div className='flex justify-between items-center gap-5'>
+
+                                <div className='h-20 w-32 shrink-0 overflow-hidden rounded-2xl'>
+
+                                    <Image src={exercise.image} alt=''
+                                        height={200}
+                                        width={120}
+                                        className='h-full w-full object-cover' />
+                                </div>
+                                <div className='flex flex-col'>
+                                    <h1 className='text-2xl font-bold'>{exercise.name}</h1>
+                                    <p className='text-[#9CA3AF]'>{exercise.equipment}</p>
+
+                                    <div className='flex gap-5 items-center'>
+
+                                        <div className='flex items-center gap-1'>
+                                            <IoMdTime className='text-[#C2F800]' />
+                                            <p className='text-[#9CA3AF]'>{exercise.duration} min</p>
+                                        </div>
+                                        <div className='flex items-center gap-1'>
+                                            <Image className='text-[#C2F800] text-xl' src={icon} alt='' />
+                                            <p className='text-[#9CA3AF]'>{exercise.caloriesBurned} kcal</p>
+                                        </div>
+                                        <div className='flex items-center gap-1'>
+                                            <MdOutlineStarOutline className='text-[#C2F800] text-xl' />
+                                            <p className='text-[#9CA3AF]'>{exercise.rating}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='flex gap-4'>
+
+                                <Link href={`/details/${exercise.id}`}>
+                                    <button className='rounded-full border border-slate-600 px-5 
+                                py-2 text-sm text-white cursor-pointer'>View Details</button>
+                                </Link>
+                                <button className='rounded-full bg-[#C2F800] cursor-pointer px-5 py-2 text-sm font-bold text-black'> ✓Mark as Done</button>
+                                <button onClick={() => handleremove(exercise.id)}
+                                    className='flex h-9 w-9 items-center justify-center rounded-full text-slate-500 transition hover:bg-[#1d2027] hover:text-white cursor-pointer'>
+                                    <IoClose size={20} /></button>
+                            </div>
+                        </div>)
+                    }
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Page;
