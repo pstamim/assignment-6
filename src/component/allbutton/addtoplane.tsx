@@ -38,12 +38,12 @@ const Addtoplane = ({ details }: { details: IExercise }) => {
 
             <button onClick={() => handleaddplane()}
 
-                className="flex items-center gap-2 bg-[#C2F800] text-black px-4 py-2 rounded-lg cursor-pointer">
+                className="flex items-center gap-2 bg-[#C2F800] text-black px-4 py-2 rounded-lg cursor-pointer hover:bg-[#C2F500] hover:scale-105 transition duration-300 font-bold ">
                 <IoCalendarOutline />
                 Add to today's plan
             </button>
             <button onClick={() => handlesave()}
-                className="flex items-center gap-2 border border-slate-700 px-4 py-2 rounded-lg cursor-pointer">
+                className="flex items-center gap-2 border border-slate-700 px-4 py-2 rounded-lg cursor-pointer hover:bg-[#1d2027] hover:scale-105 transition duration-300 font-bold">
 
                 <IoBookmarkOutline />
                 Save for later

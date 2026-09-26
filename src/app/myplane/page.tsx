@@ -5,7 +5,7 @@ import Image from 'next/image';
 import React, { useContext, useState } from 'react';
 import { IoMdTime } from 'react-icons/io';
 import { MdOutlineStarOutline } from 'react-icons/md';
-import { IoClose } from 'react-icons/io5';
+import { IoChevronDown, IoClose } from 'react-icons/io5';
 import Link from 'next/link';
 import { IExercise } from '@/component/types/exercise';
 import { toast } from 'react-toastify';
@@ -83,17 +83,24 @@ const Page = () => {
                     </div>
 
                     <div className="flex items-center gap-3">
+
                         <label className="text-sm text-[#8A92A0]">sortby</label>
-                        <select
-                            value={sortby}
-                            onChange={(e) => setSortby(e.target.value)}
-                            className="cursor-pointer rounded-xl border border-slate-800 bg-[#13161D] px-4 py-3 text-sm text-white outline-none focus:border-[#C2F800]">
+                        <div className='relative'>
 
-                            <option value="duration">duration</option>
-                            <option value="calories">calories</option>
-                            <option value="rating">rating</option>
+                            <select
+                                value={sortby}
+                                onChange={(e) => setSortby(e.target.value)}
+                                className="w-36 cursor-pointer appearance-none rounded-xl border border-[#2D313B] bg-[#13161D] px-4 py-3 pr-10 text-sm font-medium text-white outline-none transition focus:border-[#C2F800]">
 
-                        </select>
+                                <option value="duration">Duration</option>
+                                <option value="calories">calories</option>
+                                <option value="rating">rating</option>
+
+                            </select>
+                            <IoChevronDown
+                                className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-lg text-[#8A92A0]"
+                            />
+                        </div>
                     </div>
                 </div>
 

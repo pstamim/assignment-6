@@ -32,7 +32,7 @@ const page = async ({ params }: Iparamsprops) => {
 
                 <div className='group w-full max-w-md overflow-hidden rounded-2xl border border-slate-700 bg-[#15171e] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl mt-10 '>
 
-                    <Image className='w-[1300px] h-[600px] ' src={details.image} alt=''
+                    <Image className='h-175 w-130 object-cover ' src={details.image} alt=''
                         height={600}
                         width={350} />
                 </div>
