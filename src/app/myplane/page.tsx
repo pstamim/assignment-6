@@ -17,6 +17,14 @@ const Page = () => {
 
     const [sortby, setSortby] = useState('duration')
 
+    const [doneExercises, setDoneExercises] = useState<number[]>([])
+
+    const handleMarkDone = (id: number) => {
+        setDoneExercises((prev) => [...prev, id])
+        toast.success('Mark as Done')
+    }
+
+
     const handleremove = (id: number) => {
         if (addtab === 'Today’s Plan') {
             setaddplane(addplane.filter((exercise: IExercise) => exercise.id !== id))
@@ -157,7 +165,19 @@ const Page = () => {
                                 </Link>
                                 {addtab === "Today’s Plan" && (
 
-                                    <button className='rounded-full bg-[#C2F800] cursor-pointer px-5 py-2 text-sm font-bold text-black'> ✓Mark as Done</button>
+                                    <button
+                                        onClick={() => handleMarkDone(exercise.id)}
+                                        disabled={doneExercises.includes(exercise.id)}
+                                        className={`rounded-full px-5 py-2 text-sm font-bold ${doneExercises.includes(exercise.id)
+                                            ? 'cursor-not-allowed bg-gray-500 text-white'
+                                            : 'cursor-pointer bg-[#C2F800] text-black'
+                                            }`}
+                                    >
+                                        {doneExercises.includes(exercise.id)
+                                            ? '✓ Done'
+                                            : '✓ Mark as Done'
+                                        }
+                                    </button>
                                 )}
                                 <button onClick={() => handleremove(exercise.id)}
                                     className='flex h-9 w-9 items-center justify-center rounded-full text-slate-500 transition hover:bg-[#1d2027] hover:text-white cursor-pointer'>

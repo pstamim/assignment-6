@@ -2,8 +2,8 @@ import React from 'react';
 
 const loading = () => {
     return (
-        <div>
-            
+        <div className='container mx-auto'>
+            <span className="loading loading-spinner text-accent"></span>
         </div>
     );
 };
