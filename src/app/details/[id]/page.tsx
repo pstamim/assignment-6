@@ -1,10 +1,10 @@
-import Page from '@/app/myplane/page';
+
 import Addtoplane from '@/component/allbutton/addtoplane';
 import { IExercise } from '@/component/types/exercise';
 import Image from 'next/image';
 
-import React from 'react';
-import { IoBookmarkOutline, IoCalendarOutline } from 'react-icons/io5';
+
+
 
 
 
@@ -27,8 +27,8 @@ const page = async ({ params }: Iparamsprops) => {
     const details = exercisedata.find((workerout: IExercise) => String(workerout.id) === String(id)) as IExercise
 
     return (
-        <div className='flex justify-between container mx-auto'>
-            <div className='flex justify-center gap-10 items-center'>
+        <div className='container mx-auto px-5 sm:px-6 lg:px-8'>
+            <div className='flex flex-col items-center gap-8 py-10 md:flex-row md:items-start md:gap-10'>
 
                 <div className='group w-full max-w-md overflow-hidden rounded-2xl border border-slate-700 bg-[#15171e] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl mt-10 '>
 
@@ -103,9 +103,9 @@ const page = async ({ params }: Iparamsprops) => {
                     </ol>
                     <div className='flex items-center gap-4'>
                         <Addtoplane details={details} />
-                     
+
                     </div>
-                    
+
                 </div>
             </div>
 

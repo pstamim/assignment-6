@@ -14,9 +14,9 @@ const Home = async () => {
 
     return (
         <div className='container mx-auto mt-15 '>
-            <h1 className='text-4xl font-bold'>THE LIBRARY</h1>
-            <p className='text-[#9CA3AF]'>Twelve lifts covering every major muscle group.</p>
-            <div className='container mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-15 '>
+            <h1 className='text-4xl font-bold text-center md:text-left'>THE LIBRARY</h1>
+            <p className='text-[#9CA3AF] text-center mt-2 md:text-left'>Twelve lifts covering every major muscle group.</p>
+            <div className='container mx-auto grid max-w-7xl grid-cols-1 gap-6 px-5 sm:grid-cols-2 sm:px-4 lg:grid-cols-3 lg:px-0 mt-15 '>
                 {thelibrary.map((exercise: IExercise) => {
                     return <Exercisecard key={exercise.id} exercise={exercise} />
                 })}

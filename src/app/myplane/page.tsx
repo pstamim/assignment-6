@@ -47,13 +47,13 @@ const Page = () => {
 
     });
     return (
-        <div className='flex justify-between container mx-auto mt-10 '>
+        <div className='container mx-auto mt-10 px-5 sm:px-6 lg:px-8 '>
             <div className='space-y-3'>
 
                 <h1 className='text-4xl font-bold'>MY PLAN</h1>
                 <p className='text-[#8A92A0]'>Cap of five lifts for today. Finish them, then load more.</p>
 
-                <div className='flex justify-center gap-100 mt-10 border border-slate-800 bg-[#13161D] rounded-2xl p-10 pr-100 '>
+                <div className='mt-8 grid grid-cols-3 rounded-2xl border border-slate-800 bg-[#13161D] p-4 sm:mt-10 sm:p-6 md:p-8 '>
                     <div>
                         <p className='text-[#8A92A0]'>Exercises</p>
                         <h1 className='text-5xl font-bold text-[#C2F800]'>{sortedDisplay.length}</h1>
@@ -64,14 +64,14 @@ const Page = () => {
                             return acc + sum
                         }, 0)}</h1>
                     </div>
-                    <div className='border-l border-[#242833] pl-5'>
+                    <div className='border-l border-[#242833] px-2 pl-4 sm:px-4 sm:pl-6'>
                         <p className='text-[#8A92A0]'>Calories</p>
                         <h1 className='text-5xl font-bold'>{sortedDisplay.map(calorise => calorise.caloriesBurned).reduce((acc, sum) => {
                             return acc + sum
                         }, 0)}</h1>
                     </div>
                 </div>
-                <div className='flex justify-between'>
+                <div className='flex justify-between items-center'>
 
                     <div className='flex  w-fit items-center rounded-xl border border-[#242833] bg-[#12151b] p-1 mt-10'>
                         <button onClick={() => setaddtab('Today’s Plan')}
@@ -82,7 +82,7 @@ const Page = () => {
                          hover:text-white`}>Saved</button>
                     </div>
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 mt-10">
 
                         <label className="text-sm text-[#8A92A0]">sortby</label>
                         <div className='relative'>
@@ -118,10 +118,10 @@ const Page = () => {
                         </div>
 
                     ) : (
-                        sortedDisplay.map((exercise) => <div className='flex items-center justify-between rounded-2xl border border-slate-800 bg-[#14171D] p-5' key={exercise.id}>
-                            <div className='flex justify-between items-center gap-5'>
+                        sortedDisplay.map((exercise) => <div className='flex flex-col gap-5 rounded-2xl border border-slate-800 bg-[#14171D] p-4 sm:p-5 lg:flex-row lg:items-center lg:justify-between' key={exercise.id}>
+                            <div className='flex min-w-0 items-center gap-4 sm:gap-5'>
 
-                                <div className='h-20 w-32 shrink-0 overflow-hidden rounded-2xl'>
+                                <div className='h-20 w-24 shrink-0 overflow-hidden rounded-2xl sm:w-32'>
 
                                     <Image src={exercise.image} alt=''
                                         height={200}
